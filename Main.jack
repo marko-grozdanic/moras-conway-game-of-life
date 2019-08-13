@@ -1,0 +1,43 @@
+class Main 
+{
+	function void main() 
+	{
+		var int cursorX, cursorY;
+		var char pressedCharacter; 
+		let cursorX = 0;
+		let cursorY = 0;
+		
+		while(true)
+		{
+			 let pressedCharacter = Keyboard.keyPressed();
+			 while(~(pressedCharacter = 0))
+			 {
+				 
+				 if(Keyboard.keyPressed()  = 0)
+				 {
+					 do Output.printChar(pressedCharacter);
+				 }	
+				 
+				 let pressedCharacter = 0;
+				 
+			 }
+		}
+		//do Keyboard.readChar();
+		/*while(true)
+	   {
+		   if(~(Keyboard.keyPressed()  = 0))
+		   {
+			    do Output.printChar(Keyboard.keyPressed()); 
+		   }			  
+	   }*/
+		/*let pressedCharacter = Keyboard.readChar(); 
+		
+		while(~(pressedCharacter = 0)) 
+		{ 
+			do Output.printChar(pressedCharacter); 
+			let pressedCharacter = Keyboard.readChar(); 
+		}*/
+		
+		return; 
+	}
+}	
