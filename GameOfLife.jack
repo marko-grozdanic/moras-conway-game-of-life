@@ -23,19 +23,45 @@ class GameOfLife
 		let Matrix = Array.new(boardDimension); 
 		let counter = 0;
 		
-		//Initialise original Matrix values
+		//Initialise original board cell status based on user's scenario input
+		do initialiseBoard(0);
 		
+		//Draw step zero
+		while(counter < boardDimension)
+		{
+			if(Matrix[counter] = 1)
+			{
+				//do drawSquare(counter);
+			}
+			
+			let counter = counter + 1;
+		}
+		
+		do Output.printInt(modulo(68, 64));
+		//do Output.printInt(5 / (3 * 3));
 		
 		//Calculate next step
 		
 		//End Simulation
-		while(counter < numRows )
+		/*while(counter < numRows )
 		{
 			do drawSquare(counter, counter);
 			let counter = counter + 1;
-		}
-		//do drawSquare(0, 0);
+		}*/
 		
+		return;
+	}
+	
+	method void initialiseBoard(int scenario)
+	{
+		if(scenario = 0)
+		{
+			let Matrix[300] = 1;
+			let Matrix[301] = 1;
+			let Matrix[302] = 1;
+			let Matrix[331] = 1;
+			let Matrix[459] = 1;
+		}
 		return;
 	}
 	
@@ -55,6 +81,13 @@ class GameOfLife
 			do Screen.drawRectangle(xTop, yTop, xBottom, yBottom);
 			
 			return;
+	}
+	
+	method int modulo(int a, int b)
+	{
+		var int result;
+		let result = a - (b * (a/b));
+		return result;
 	}
 	
 }	

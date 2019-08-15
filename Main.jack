@@ -2,14 +2,9 @@ class Main
 {
 	function void main() 
 	{
-		var int numRows;
-		var int numColumns;
 		var GameOfLife game;
-		var Array matrix;
 		
 		let game = GameOfLife.new(256, 512);		
-		
-		//let matrix = Array.new(2048); 
 		
 		do game.start();
 
