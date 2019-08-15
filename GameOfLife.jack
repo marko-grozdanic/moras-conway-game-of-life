@@ -1,0 +1,60 @@
+class GameOfLife 
+{
+	field int numRows, numColumns, boardDimension;
+	field Array Matrix;
+	
+	constructor GameOfLife new(int x, int y) //Expects x and y as pixel resolution values(height, width)
+	{
+		let numRows = (x / 8); //Number of our abstract 'rows', pixel size divided by 8
+		let numColumns = (y / 8);
+		let boardDimension = (x / 8) * (y / 8);  //Dimension of the board in separated into squares size of 8px
+		return this;
+	}
+	
+	method void dispose()
+	{
+		do Matrix.dispose();
+		return;
+	}
+	
+	method void start() 
+	{	
+		var int counter;
+		let Matrix = Array.new(boardDimension); 
+		let counter = 0;
+		
+		//Initialise original Matrix values
+		
+		
+		//Calculate next step
+		
+		//End Simulation
+		while(counter < numRows )
+		{
+			do drawSquare(counter, counter);
+			let counter = counter + 1;
+		}
+		//do drawSquare(0, 0);
+		
+		return;
+	}
+	
+	//method void drawSquare(int xTop, int yTop)
+	method void drawSquare(int row, int column)
+	{	
+			var int xTop;
+			var int yTop;
+			var int xBottom;
+			var int yBottom;
+			
+			let xTop = row * 8;
+			let yTop = column * 8;
+			let xBottom = xTop + 7;
+			let yBottom = yTop + 7;
+
+			do Screen.drawRectangle(xTop, yTop, xBottom, yBottom);
+			
+			return;
+	}
+	
+}	

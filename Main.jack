@@ -2,42 +2,18 @@ class Main
 {
 	function void main() 
 	{
-		var int cursorX, cursorY;
-		var char pressedCharacter; 
-		let cursorX = 0;
-		let cursorY = 0;
+		var int numRows;
+		var int numColumns;
+		var GameOfLife game;
+		var Array matrix;
 		
-		while(true)
-		{
-			 let pressedCharacter = Keyboard.keyPressed();
-			 while(~(pressedCharacter = 0))
-			 {
-				 
-				 if(Keyboard.keyPressed()  = 0)
-				 {
-					 do Output.printChar(pressedCharacter);
-				 }	
-				 
-				 let pressedCharacter = 0;
-				 
-			 }
-		}
-		//do Keyboard.readChar();
-		/*while(true)
-	   {
-		   if(~(Keyboard.keyPressed()  = 0))
-		   {
-			    do Output.printChar(Keyboard.keyPressed()); 
-		   }			  
-	   }*/
-		/*let pressedCharacter = Keyboard.readChar(); 
+		let game = GameOfLife.new(256, 512);		
 		
-		while(~(pressedCharacter = 0)) 
-		{ 
-			do Output.printChar(pressedCharacter); 
-			let pressedCharacter = Keyboard.readChar(); 
-		}*/
+		//let matrix = Array.new(2048); 
 		
-		return; 
+		do game.start();
+
+		return;		
 	}
+	
 }	
