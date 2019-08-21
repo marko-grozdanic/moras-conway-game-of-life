@@ -29,25 +29,18 @@ class GameOfLife
 		//Draw step zero
 		while(counter < boardDimension)
 		{
-			if(Matrix[counter] = 1)
-			{
-				//do drawSquare(counter);
-			}
+			//if(Matrix[counter] = 1)
+			//{
+				do drawSquare(counter);
+				do Sys.wait(20);
+			//}
 			
 			let counter = counter + 1;
 		}
 		
-		do Output.printInt(modulo(68, 64));
-		//do Output.printInt(5 / (3 * 3));
-		
 		//Calculate next step
 		
 		//End Simulation
-		/*while(counter < numRows )
-		{
-			do drawSquare(counter, counter);
-			let counter = counter + 1;
-		}*/
 		
 		return;
 	}
@@ -66,21 +59,41 @@ class GameOfLife
 	}
 	
 	//method void drawSquare(int xTop, int yTop)
-	method void drawSquare(int row, int column)
+	method void drawSquare(int cellNumber)
 	{	
-			var int xTop;
-			var int yTop;
-			var int xBottom;
-			var int yBottom;
+			var int xTop, yTop;
+			var int xBottom, yBottom;
+			var int k, l;
 			
-			let xTop = row * 8;
-			let yTop = column * 8;
+			let k = cellNumber / numRows; //Find out which row of the board is the cell in
+			// do Output.printInt(k);
+			// do Output.println();
+			let l = modulo(cellNumber, numColumns); //Find out which column of the row is the cell in
+			// do Output.printInt(l);
+			// do Output.println();
+			
+			let xTop = k * 8;
+			// do Output.printInt(xTop);
+			// do Output.println();
+			let yTop = l * 8;
+			// do Output.printInt(yTop);
+			// do Output.println();
+			// do Output.printChar(48);
+			// do Output.println();
 			let xBottom = xTop + 7;
 			let yBottom = yTop + 7;
+			// do Output.printInt(xBottom);
+			// do Output.println();
+			// do Output.printInt(yBottom);
+			// do Output.println();
 
-			do Screen.drawRectangle(xTop, yTop, xBottom, yBottom);
+			do Screen.drawRectangle(yTop, xTop, yBottom, xBottom); //Swap x, y places(Check nand2tetris Screen methods implementation)
 			
 			return;
+			// if ((x1 < 0) | (x1 > 511) | (y1 < 0) | (y1 > 255) |
+			// (x2 < 0) | (x2 > 511) | (y2 < 0) | (y2 > 255) |
+			// (x1 > x2) | (y1 > y2)) {
+			// do Sys.error(9); // Screen.drawRectangle: Illegal rectangle coordinates    
 	}
 	
 	method int modulo(int a, int b)

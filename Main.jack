@@ -3,8 +3,8 @@ class Main
 	function void main() 
 	{
 		var GameOfLife game;
-		
-		let game = GameOfLife.new(256, 512);		
+		/* 256 x 512 is the Hack computer screen resolution. This gives us a grid of 32 rows and 64 columns of 8x8 square cells. */
+		let game = GameOfLife.new(256, 512);			
 		
 		do game.start();
 
