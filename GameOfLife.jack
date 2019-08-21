@@ -47,13 +47,42 @@ class GameOfLife
 	
 	method void initialiseBoard(int scenario)
 	{
-		if(scenario = 0)
+		if(scenario = 0) //Generate random cell setup
 		{
-			let Matrix[300] = 1;
-			let Matrix[301] = 1;
-			let Matrix[302] = 1;
-			let Matrix[331] = 1;
-			let Matrix[459] = 1;
+			let Matrix[2046] = 1;
+			let Matrix[2047] = 1;
+			let Matrix[2048] = 1;
+			let Matrix[2049] = 1;
+			let Matrix[2050] = 1;
+			return;
+		}
+		if(scenario = 1) //Draw a blinker
+		{
+			return;
+		}
+		if(scenario = 2) //Draw a toad
+		{
+			return;
+		}
+		if(scenario = 3) //Draw a beacon
+		{
+			return;
+		}
+		if(scenario = 4) //Draw a pulsar
+		{
+			return;
+		}
+		if(scenario = 5) //Draw a penta-decathlon
+		{
+			return;
+		}
+		if(scenario = 6) //Draw a glider
+		{
+			return;
+		}
+		if(scenario = 7) //Draw a heavy weight spaceship
+		{
+			return;
 		}
 		return;
 	}
