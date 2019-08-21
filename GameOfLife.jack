@@ -5,9 +5,9 @@ class GameOfLife
 	
 	constructor GameOfLife new(int x, int y) //Expects x and y as pixel resolution values(height, width)
 	{
-		let numRows = (x / 8); //Number of our abstract 'rows', pixel size divided by 8
-		let numColumns = (y / 8);
-		let boardDimension = (x / 8) * (y / 8);  //Dimension of the board in separated into squares size of 8px
+		let numColumns = (x / 8); //Number of our abstract 'columns', pixel size divided by 8
+		let numRows = (y / 8); //Number of our abstract 'rows', pixel size divided by 8
+		let boardDimension = numColumns * numRows * 2;  //Dimension of the board in separated into squares size of 8px
 		return this;
 	}
 	
@@ -29,16 +29,16 @@ class GameOfLife
 		//Draw step zero
 		while(counter < boardDimension)
 		{
-			//if(Matrix[counter] = 1)
-			//{
+			if(Matrix[counter] = 1)
+			{
 				do drawSquare(counter);
-				do Sys.wait(20);
-			//}
+				//do Sys.wait(5);
+			}
 			
 			let counter = counter + 1;
 		}
 		
-		//Calculate next step
+		//Calculate and draw next step
 		
 		//End Simulation
 		
@@ -65,10 +65,10 @@ class GameOfLife
 			var int xBottom, yBottom;
 			var int k, l;
 			
-			let k = cellNumber / numRows; //Find out which row of the board is the cell in
+			let k = cellNumber / numColumns; //Find out which row of the board is the cell in
 			// do Output.printInt(k);
 			// do Output.println();
-			let l = modulo(cellNumber, numColumns); //Find out which column of the row is the cell in
+			let l = modulo(cellNumber, numRows); //Find out which column of the row is the cell in
 			// do Output.printInt(l);
 			// do Output.println();
 			
@@ -87,13 +87,18 @@ class GameOfLife
 			// do Output.printInt(yBottom);
 			// do Output.println();
 
-			do Screen.drawRectangle(yTop, xTop, yBottom, xBottom); //Swap x, y places(Check nand2tetris Screen methods implementation)
+			do Screen.drawRectangle(xTop, yTop, xBottom, yBottom); 
 			
 			return;
 			// if ((x1 < 0) | (x1 > 511) | (y1 < 0) | (y1 > 255) |
 			// (x2 < 0) | (x2 > 511) | (y2 < 0) | (y2 > 255) |
 			// (x1 > x2) | (y1 > y2)) {
 			// do Sys.error(9); // Screen.drawRectangle: Illegal rectangle coordinates    
+	}
+	
+	method void calculateStep()
+	{
+		return;
 	}
 	
 	method int modulo(int a, int b)
