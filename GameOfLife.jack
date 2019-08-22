@@ -1,7 +1,7 @@
 class GameOfLife 
 {
 	field int numRows, numColumns, boardDimension, stepDelay;
-	field Array Matrix;
+	field Array Matrix, Buffer;
 	
 	constructor GameOfLife new(int x, int y) //Expects x and y as pixel resolution values(height, width)
 	{
@@ -9,6 +9,8 @@ class GameOfLife
 		let numRows = (y / 8); //Number of our abstract 'rows', pixel size divided by 8
 		let boardDimension = numColumns * numRows * 2;  //Dimension of the board in separated into squares size of 8px
 		let stepDelay = 20; //Delay between displaying steps(in ms)
+		let Matrix = Array.new(boardDimension);
+		let Buffer = Array.new(boardDimension);
 		return this;
 	}
 	
@@ -19,11 +21,9 @@ class GameOfLife
 	}
 	
 	method void start() 
-	{	
-		let Matrix = Array.new(boardDimension); 
-		
+	{			
 		//Print game instructions
-		
+		// do printInstructions();
 		//Initialise the Matrix based on user's scenario input
 		do initialiseBoard(1);
 		
@@ -31,10 +31,16 @@ class GameOfLife
 		do drawStep();
 		
 		//Calculate and draw next step
-		do calculateStep();
+		while(true)
+		{
+			do calculateStep(); //Calculates a new Matrix
+			do Sys.wait(5);
+			do drawStep(); //Prints the Matrix
+			do Sys.wait(stepDelay); //Wait until next step 
+		}
 		
 		//End Simulation
-		
+		// do endGame();
 		return;
 	}
 	
@@ -108,7 +114,76 @@ class GameOfLife
 	}
 	
 	method void calculateStep() //Calculates the next Matrix state
-	{
+	{	
+		var int i, aliveNeighbouringCells;
+		//let i = 0;
+		let i = 50;
+		let aliveNeighbouringCells = 0;
+		let Buffer = Matrix; //Make a copy of the previous state
+		
+		// while(i < boardDimension)
+		while(i < 4000)
+		{	
+			if(Buffer[i-1] = 1) //North 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			if(Buffer[i+1] = 1) //South 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			if(Buffer[i+32] = 1) //East 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			if(Buffer[i-32] = 1) //West 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			if(Buffer[i+31] = 1) //Northeast 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			if(Buffer[i+31] = 1) //Southeast 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			if(Buffer[i-31] = 1) //Southwest 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			if(Buffer[i-31] = 1) //Northwest 
+			{
+				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			}
+			
+			if(Buffer[i] = 1) //The cell was previously alive, it will stay alive only if it has two or three alive neighbours
+			{
+				let Matrix[i] = 0; //Dead by default
+				if(aliveNeighbouringCells = 2)
+				{
+					let Matrix[i] = 1;
+				}
+				if(aliveNeighbouringCells = 3)
+				{
+					let Matrix[i] = 1;
+				}
+			}
+			else //The cell was previously dead, it will only come alive if it has exactly three neighbours
+			{
+				if(aliveNeighbouringCells = 3)
+				{
+					let Matrix[i] = 1;
+				}
+				else
+				{
+					let Matrix[i] = 0;
+				}
+				
+			}
+			// let Matrix[i] = 1;
+			let i = i + 1;
+		}
 		return;
 	}
 	
