@@ -1,6 +1,6 @@
 class GameOfLife 
 {
-	field int numRows, numColumns, boardDimension;
+	field int numRows, numColumns, boardDimension, stepDelay;
 	field Array Matrix;
 	
 	constructor GameOfLife new(int x, int y) //Expects x and y as pixel resolution values(height, width)
@@ -8,6 +8,7 @@ class GameOfLife
 		let numColumns = (x / 8); //Number of our abstract 'columns', pixel size divided by 8
 		let numRows = (y / 8); //Number of our abstract 'rows', pixel size divided by 8
 		let boardDimension = numColumns * numRows * 2;  //Dimension of the board in separated into squares size of 8px
+		let stepDelay = 20; //Delay between displaying steps(in ms)
 		return this;
 	}
 	
@@ -19,26 +20,18 @@ class GameOfLife
 	
 	method void start() 
 	{	
-		var int counter;
 		let Matrix = Array.new(boardDimension); 
-		let counter = 0;
 		
-		//Initialise original board cell status based on user's scenario input
-		do initialiseBoard(0);
+		//Print game instructions
+		
+		//Initialise the Matrix based on user's scenario input
+		do initialiseBoard(1);
 		
 		//Draw step zero
-		while(counter < boardDimension)
-		{
-			if(Matrix[counter] = 1)
-			{
-				do drawSquare(counter);
-				//do Sys.wait(5);
-			}
-			
-			let counter = counter + 1;
-		}
+		do drawStep();
 		
 		//Calculate and draw next step
+		do calculateStep();
 		
 		//End Simulation
 		
@@ -49,15 +42,13 @@ class GameOfLife
 	{
 		if(scenario = 0) //Generate random cell setup
 		{
-			let Matrix[2046] = 1;
-			let Matrix[2047] = 1;
-			let Matrix[2048] = 1;
-			let Matrix[2049] = 1;
-			let Matrix[2050] = 1;
 			return;
 		}
 		if(scenario = 1) //Draw a blinker
-		{
+		{	
+			let Matrix[2064] = 1;
+			let Matrix[2032] = 1;
+			let Matrix[2000] = 1;
 			return;
 		}
 		if(scenario = 2) //Draw a toad
@@ -91,7 +82,6 @@ class GameOfLife
 	method void drawSquare(int cellNumber)
 	{	
 			var int xTop, yTop;
-			var int xBottom, yBottom;
 			var int k, l;
 			
 			let k = cellNumber / numColumns; //Find out which row of the board is the cell in
@@ -107,16 +97,8 @@ class GameOfLife
 			let yTop = l * 8;
 			// do Output.printInt(yTop);
 			// do Output.println();
-			// do Output.printChar(48);
-			// do Output.println();
-			let xBottom = xTop + 7;
-			let yBottom = yTop + 7;
-			// do Output.printInt(xBottom);
-			// do Output.println();
-			// do Output.printInt(yBottom);
-			// do Output.println();
 
-			do Screen.drawRectangle(xTop, yTop, xBottom, yBottom); 
+			do Screen.drawRectangle(xTop, yTop, xTop + 7, yTop + 7); 
 			
 			return;
 			// if ((x1 < 0) | (x1 > 511) | (y1 < 0) | (y1 > 255) |
@@ -125,8 +107,25 @@ class GameOfLife
 			// do Sys.error(9); // Screen.drawRectangle: Illegal rectangle coordinates    
 	}
 	
-	method void calculateStep()
+	method void calculateStep() //Calculates the next Matrix state
 	{
+		return;
+	}
+	
+	method void drawStep() //Draws the current Matrix state
+	{	
+		var int i;
+		let i = 0;
+		while(i < boardDimension)
+		{
+			if(Matrix[i] = 1)
+			{
+				do drawSquare(i);
+			}
+			
+			let i = i + 1;
+		}
+		
 		return;
 	}
 	
