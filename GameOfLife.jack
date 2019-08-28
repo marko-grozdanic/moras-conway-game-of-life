@@ -17,6 +17,7 @@ class GameOfLife
 	method void dispose()
 	{
 		do Matrix.dispose();
+		do Buffer.dispose();
 		return;
 	}
 	
@@ -69,12 +70,17 @@ class GameOfLife
 	method void calculateStep() //Calculates the next Matrix state
 	{	
 		var int i, aliveNeighbouringCells;
-		let i = 65;
+		let i = 0;
 		let aliveNeighbouringCells = 0;
-		let Buffer = Matrix; //Make a copy of the previous state
-		
+		while(i < 2048)
+		{
+			let Buffer[i] = Matrix[i];
+			let i = i+1;
+		}
+		// let Buffer = Matrix; //Make a copy of the previous state
+		let i = 65;
 		// while(i < boardDimension)
-		while(i < 1983)
+		while(i < 1983) //For every cell
 		{	
 			if(Buffer[i-64] = 1) //North 
 			{
