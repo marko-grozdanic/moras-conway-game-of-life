@@ -6,7 +6,7 @@ class GameOfLife
 	constructor GameOfLife new()
 	{
 		let boardDimension = 2048;
-		let stepDelay = 500; //Delay between displaying steps(in ms)
+		let stepDelay = 300; //Delay between displaying steps(in ms)
 		let Matrix = Array.new(boardDimension);
 		let Buffer = Array.new(boardDimension);
 		do initialiseMatrix();
@@ -24,6 +24,8 @@ class GameOfLife
 	method void start(int seed) 
 	{	
 		var char c;
+		do LCGRandom.setSeed(seed); //Set the seed for random generation
+		
 		//Print game instructions and wait for scenario input
 		do Graphics.printInstructions();
 		do Sys.wait(200);
@@ -77,41 +79,64 @@ class GameOfLife
 			let Buffer[i] = Matrix[i];
 			let i = i+1;
 		}
-		let i = 64;
-		// while(i < boardDimension)
-		while(i < 1983) //For every cell
+		let i = 0;
+		while(i < 2048) //For every cell
 		{	
-			if(Buffer[i-64] = 1) //North 
-			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+			if((i-64) > -1) //North 
+			{	
+				if(Buffer[i-64] = 1)
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}				
 			}
-			if(Buffer[i+64] = 1) //South 
+			if((i+64) < 2048) //South 
 			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				if(Buffer[i+64] = 1) 
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
 			}
-			if(Buffer[i+1] = 1) //East 
+			if((i+1) < 2048) //East 
 			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				if(Buffer[i+1] = 1)
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
 			}
-			if(Buffer[i-1] = 1) //West 
+			if((i-1) > -1) //West 
 			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				if(Buffer[i-1] = 1)
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
 			}
-			if(Buffer[i-63] = 1) //Northeast 
+			if((i-63) > -1) //Northeast 
 			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				if(Buffer[i-63] = 1)
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
 			}
-			if(Buffer[i+65] = 1) //Southeast 
+			if((i+65) < 2048) //Southeast 
 			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				if(Buffer[i+65] = 1)
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
 			}
-			if(Buffer[i+63] = 1) //Southwest 
+			if((i+63) < 2048) //Southwest 
 			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
-			}
-			if(Buffer[i-65] = 1) //Northwest 
+				if(Buffer[i+63] = 1)
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
+			}			
+			if((i-65) > -1) //Northwest 
 			{
-				let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				if(Buffer[i-65] = 1) 
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
 			}
 			
 			if(Buffer[i] = 1) //The cell was previously alive, it will stay alive only if it has two or three alive neighbours
@@ -203,8 +228,19 @@ class GameOfLife
 	
 	method void initialiseBoard(int scenario)
 	{
+		var int i, j;
 		if(scenario = 48) //Generate random cell setup
 		{
+			let i = 0;
+			while(i < 2048)
+			{
+				let j = LCGRandom.randRange(0, 6);
+				if(j = 1)
+				{
+					let Matrix[i] = 1;
+				}
+				let i = i + 1;
+			}
 			return;
 		}
 		if(scenario = 49) //Draw a blinker

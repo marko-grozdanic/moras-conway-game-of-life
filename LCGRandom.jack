@@ -29,14 +29,14 @@ class LCGRandom {
         let A=219;
         let M=32749;
         let Q=M/A;
-        let R=Utils.mod(M,A);
+        let R=ExtraMath.modulo(M,A);
         return;
     }
 
     /* returns a random int in range 0..(M-1) inclusive */
     function int rand() {
         var int test;
-        let test=(A*(Utils.mod(seed,Q)))-(R*(seed/Q));
+        let test=(A*(ExtraMath.modulo(seed,Q)))-(R*(seed/Q));
         if(test<0) {
            let seed=test+M;
         }
