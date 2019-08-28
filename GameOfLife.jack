@@ -3,7 +3,7 @@ class GameOfLife
 	field int numRows, numColumns, boardDimension, stepDelay;
 	field Array Matrix, Buffer;
 	
-	constructor GameOfLife new() //Expects x and y as pixel resolution values(height, width)
+	constructor GameOfLife new()
 	{
 		let boardDimension = 2048;
 		let stepDelay = 500; //Delay between displaying steps(in ms)
@@ -20,12 +20,17 @@ class GameOfLife
 		return;
 	}
 	
-	method void start() 
-	{			
-		//Print game instructions
-		// do printInstructions();
+	method void start(int seed) 
+	{	
+		var char c;
+		//Print game instructions and wait for scenario input
+		do Graphics.printInstructions();
+		do Sys.wait(200);
+		let c = Keyboard.readChar();
+		do Screen.clearScreen();
+		
 		//Initialise the Matrix based on user's scenario input
-		do initialiseBoard(1);
+		do initialiseBoard(c);
 		
 		//Draw step zero
 		do drawStep();
@@ -51,26 +56,14 @@ class GameOfLife
 			var int k, l;
 			
 			let k = cellNumber / 64; //Find out which row of the board is the cell in [0, 31]
-			// do Output.printInt(k);
-			// do Output.println();
 			let l = ExtraMath.modulo(cellNumber, 64); //Find out which column of the row is the cell in [0, 63]
-			// do Output.printInt(l);
-			// do Output.println();
 			
 			let xTop = l * 8;
-			// do Output.printInt(xTop);
-			// do Output.println();
 			let yTop = k * 8;
-			// do Output.printInt(yTop);
-			// do Output.println();
 
 			do Screen.drawRectangle(xTop, yTop, xTop + 7, yTop + 7); 
 			
 			return;
-			// if ((x1 < 0) | (x1 > 511) | (y1 < 0) | (y1 > 255) |
-			// (x2 < 0) | (x2 > 511) | (y2 < 0) | (y2 > 255) |
-			// (x1 > x2) | (y1 > y2)) {
-			// do Sys.error(9); // Screen.drawRectangle: Illegal rectangle coordinates    
 	}
 	
 	method void calculateStep() //Calculates the next Matrix state
@@ -205,18 +198,18 @@ class GameOfLife
 	
 	method void initialiseBoard(int scenario)
 	{
-		if(scenario = 0) //Generate random cell setup
+		if(scenario = 48) //Generate random cell setup
 		{
 			return;
 		}
-		if(scenario = 1) //Draw a blinker
+		if(scenario = 49) //Draw a blinker
 		{	
 			let Matrix[1056] = 1; //Center square
 			let Matrix[1055] = 1;
 			let Matrix[1057] = 1;
 			return;
 		}
-		if(scenario = 2) //Draw a toad
+		if(scenario = 50) //Draw a toad
 		{
 			let Matrix[1056] = 1; //Center square
 			let Matrix[1057] = 1;
@@ -226,7 +219,7 @@ class GameOfLife
 			let Matrix[1119] = 1;
 			return;
 		}
-		if(scenario = 3) //Draw a beacon
+		if(scenario = 51) //Draw a beacon
 		{
 			let Matrix[1053] = 1; 
 			let Matrix[1054] = 1;
@@ -239,7 +232,7 @@ class GameOfLife
 			let Matrix[1248] = 1;
 			return;
 		}
-		if(scenario = 4) //Draw a pulsar
+		if(scenario = 52) //Draw a pulsar
 		{
 			let Matrix[991] = 1; 
 			let Matrix[992] = 1; 
@@ -295,7 +288,7 @@ class GameOfLife
 			
 			return;
 		}
-		if(scenario = 5) //Draw a penta-decathlon
+		if(scenario = 53) //Draw a penta-decathlon
 		{
 			let Matrix[1048] = 1; 
 			let Matrix[1049] = 1; 
@@ -312,7 +305,7 @@ class GameOfLife
 			let Matrix[1057] = 1;
 			return;
 		}
-		if(scenario = 6) //Draw a glider
+		if(scenario = 54) //Draw a glider
 		{
 			let Matrix[992] = 1;
 			let Matrix[1057] = 1;
@@ -321,7 +314,7 @@ class GameOfLife
 			let Matrix[1119] = 1;
 			return;
 		}
-		if(scenario = 7) //Draw a heavy weight spaceship
+		if(scenario = 55) //Draw a heavy weight spaceship
 		{
 			let Matrix[998] = 1; 
 			let Matrix[870] = 1; 

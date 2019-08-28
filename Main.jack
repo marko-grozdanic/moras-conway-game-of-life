@@ -3,15 +3,30 @@ class Main
 	function void main() 
 	{
 		var GameOfLife game;
+		var bool status;
+		var int seed;
+		let seed = 0;
+		let status = true;
 		/* 512 x 256 is the Hack computer screen resolution. This gives us a grid of 64 columns and 32 rows of 8x8 square cells. */
-		let game = GameOfLife.new();			
-		
+		let game = GameOfLife.new();
 		//Logo display
-		
+		do Graphics.displayLogo();
 		//Wait for Enter
-			do game.start();
+		while(status)
+		{
+			let seed = seed + 1;
+			if(seed > 32748)
+			{
+				let seed = 0;
+			}
+			if(Keyboard.keyPressed() = 128) //Enter
+			{
+				do Screen.clearScreen();
+				do game.start(seed);
+			}
+		}
 
-		return;		
+		return;
 	}
 	
 }	

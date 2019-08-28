@@ -1,0 +1,29 @@
+class Graphics
+{
+	function void displayLogo()
+		{
+			do Screen.drawRectangle(64, 64, 255, 255); 
+			return;
+		}
+	function void printInstructions()
+	{
+		do Output.printString("Welcome to HACK Conway's Game of Life!");
+		do Output.println();
+		do Output.printString("0 - Generate a random setup");
+		do Output.println();
+		do Output.printString("1 - Spawn a blinker");
+		do Output.println();
+		do Output.printString("2 - Spawn a toad");
+		do Output.println();
+		do Output.printString("3 - Spawn a beacon");
+		do Output.println();
+		do Output.printString("4 - Spawn a pulsar");
+		do Output.println();
+		do Output.printString("5 - Spawn a penta-decathlon");
+		do Output.println();
+		do Output.printString("6 - Spawn a glider");
+		do Output.println();
+		do Output.printString("7 - Spawn a heavy-weight spaceship");
+		return;
+	}
+}
