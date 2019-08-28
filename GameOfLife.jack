@@ -6,7 +6,7 @@ class GameOfLife
 	constructor GameOfLife new() //Expects x and y as pixel resolution values(height, width)
 	{
 		let boardDimension = 2048;
-		let stepDelay = 20; //Delay between displaying steps(in ms)
+		let stepDelay = 500; //Delay between displaying steps(in ms)
 		let Matrix = Array.new(boardDimension);
 		let Buffer = Array.new(boardDimension);
 		do initialiseMatrix();
@@ -25,7 +25,7 @@ class GameOfLife
 		//Print game instructions
 		// do printInstructions();
 		//Initialise the Matrix based on user's scenario input
-		do initialiseBoard(1);
+		do initialiseBoard(7);
 		
 		//Draw step zero
 		do drawStep();
@@ -33,11 +33,10 @@ class GameOfLife
 		// Calculate and draw next step
 		while(true)
 		{
+			do Sys.wait(stepDelay); //Wait until next step 
 			do calculateStep(); //Calculates a new Matrix
-			do Sys.wait(500);
 			do Screen.clearScreen();
 			do drawStep(); //Prints the Matrix
-			do Sys.wait(stepDelay); //Wait until next step 
 		 }
 		
 		//End Simulation
@@ -56,36 +55,128 @@ class GameOfLife
 			let Matrix[1056] = 1; //Center square
 			let Matrix[1055] = 1;
 			let Matrix[1057] = 1;
-			
-			// let Matrix[1056] = 1; //Center square
-			// let Matrix[991] = 1;
-			// let Matrix[1121] = 1;
-			// let Matrix[1120] = 1;
-			// let Matrix[1119] = 1;
 			return;
 		}
 		if(scenario = 2) //Draw a toad
 		{
+			let Matrix[1056] = 1; //Center square
+			let Matrix[1057] = 1;
+			let Matrix[1058] = 1;
+			let Matrix[1121] = 1;
+			let Matrix[1120] = 1;
+			let Matrix[1119] = 1;
 			return;
 		}
 		if(scenario = 3) //Draw a beacon
 		{
+			let Matrix[1053] = 1; 
+			let Matrix[1054] = 1;
+			let Matrix[1117] = 1;
+			let Matrix[1118] = 1;
+			
+			let Matrix[1183] = 1;
+			let Matrix[1184] = 1;
+			let Matrix[1247] = 1;
+			let Matrix[1248] = 1;
 			return;
 		}
 		if(scenario = 4) //Draw a pulsar
 		{
+			let Matrix[991] = 1; 
+			let Matrix[992] = 1; 
+			let Matrix[993] = 1; 
+			let Matrix[931] = 1; 
+			let Matrix[867] = 1; 
+			let Matrix[803] = 1; 
+			let Matrix[926] = 1; 
+			let Matrix[862] = 1; 
+			let Matrix[798] = 1; 
+			let Matrix[671] = 1; 
+			let Matrix[672] = 1; 
+			let Matrix[673] = 1; 
+			
+			let Matrix[985] = 1; 
+			let Matrix[986] = 1; 
+			let Matrix[987] = 1; 
+			let Matrix[924] = 1; 
+			let Matrix[860] = 1; 
+			let Matrix[796] = 1; 
+			let Matrix[667] = 1; 
+			let Matrix[666] = 1; 
+			let Matrix[665] = 1; 
+			let Matrix[919] = 1; 
+			let Matrix[855] = 1; 
+			let Matrix[791] = 1; 
+			
+			let Matrix[1119] = 1; 
+			let Matrix[1120] = 1; 
+			let Matrix[1121] = 1; 
+			let Matrix[1439] = 1; 
+			let Matrix[1440] = 1; 
+			let Matrix[1441] = 1; 
+			let Matrix[1310] = 1; 
+			let Matrix[1246] = 1; 
+			let Matrix[1182] = 1; 
+			let Matrix[1315] = 1; 
+			let Matrix[1251] = 1; 
+			let Matrix[1187] = 1; 
+			
+			let Matrix[1113] = 1; 
+			let Matrix[1114] = 1; 
+			let Matrix[1115] = 1; 
+			let Matrix[1180] = 1; 
+			let Matrix[1244] = 1; 
+			let Matrix[1308] = 1; 
+			let Matrix[1435] = 1; 
+			let Matrix[1434] = 1; 
+			let Matrix[1433] = 1; 
+			let Matrix[1303] = 1; 
+			let Matrix[1239] = 1; 
+			let Matrix[1175] = 1; 
+			
 			return;
 		}
 		if(scenario = 5) //Draw a penta-decathlon
 		{
+			let Matrix[1048] = 1; 
+			let Matrix[1049] = 1; 
+			let Matrix[986] = 1; 
+			let Matrix[1114] = 1; 
+			let Matrix[1051] = 1; 
+			let Matrix[1052] = 1; 
+			
+			let Matrix[1053] = 1;
+			let Matrix[1054] = 1;
+			let Matrix[1119] = 1;
+			let Matrix[991] = 1;
+			let Matrix[1056] = 1;
+			let Matrix[1057] = 1;
 			return;
 		}
 		if(scenario = 6) //Draw a glider
 		{
+			let Matrix[992] = 1;
+			let Matrix[1057] = 1;
+			let Matrix[1121] = 1;
+			let Matrix[1120] = 1;
+			let Matrix[1119] = 1;
 			return;
 		}
 		if(scenario = 7) //Draw a heavy weight spaceship
 		{
+			let Matrix[998] = 1; 
+			let Matrix[870] = 1; 
+			let Matrix[803] = 1; 
+			let Matrix[804] = 1; 
+			let Matrix[865] = 1; 
+			let Matrix[928] = 1; 
+			let Matrix[992] = 1; 
+			let Matrix[1056] = 1; 
+			let Matrix[1057] = 1; 
+			let Matrix[1058] = 1; 
+			let Matrix[1059] = 1; 
+			let Matrix[1060] = 1; 
+			let Matrix[1061] = 1; 
 			return;
 		}
 		return;
@@ -123,7 +214,6 @@ class GameOfLife
 	method void calculateStep() //Calculates the next Matrix state
 	{	
 		var int i, aliveNeighbouringCells;
-		//let i = 0;
 		let i = 100;
 		let aliveNeighbouringCells = 0;
 		let Buffer = Matrix; //Make a copy of the previous state
@@ -178,17 +268,15 @@ class GameOfLife
 			}
 			else //The cell was previously dead, it will only come alive if it has exactly three neighbours
 			{
+				// let Matrix[i] = 0; //It already is 0 in the matrix if it is 0 in the buffer
 				if(aliveNeighbouringCells = 3)
 				{
 					let Matrix[i] = 1;
 				}
-				else
-				{
-					let Matrix[i] = 0;
-				}
 				
 			}
 			let i = i + 1;
+			let aliveNeighbouringCells = 0;
 		}
 		return;
 	}
