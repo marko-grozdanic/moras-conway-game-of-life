@@ -200,6 +200,10 @@ class GameOfLife
 		{
 			let paused = true;
 		}
+		if(key = 129) //Backspace clears the board of cells
+		{
+			do initialiseMatrix();
+		}
 		do addCellsToBoard(key);
 		return;
 	}
