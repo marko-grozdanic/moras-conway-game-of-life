@@ -1,16 +1,18 @@
 class GameOfLife 
 {
 	field int numRows, numColumns, boardDimension, stepDelay;
+	field bool paused;
 	field Array Matrix, Buffer;
 	
 	constructor GameOfLife new()
 	{
 		let boardDimension = 2048;
-		let stepDelay = 300; //Delay between displaying steps(in ms)
+		let stepDelay = 1000; //Delay between displaying steps(in ms)
 		let Matrix = Array.new(boardDimension);
 		let Buffer = Array.new(boardDimension);
-		do initialiseMatrix();
-		do initialiseBuffer();
+		let paused = false; //The game should be unpaused by default
+		do initialiseMatrix(); //Set matrix values to 0
+		do initialiseBuffer(); //Set buffer values to 0
 		return this;
 	}
 	
@@ -33,7 +35,7 @@ class GameOfLife
 		do Screen.clearScreen();
 		
 		//Initialise the Matrix based on user's scenario input
-		do initialiseBoard(c);
+		do addCellsToBoard(c);
 		
 		//Draw step zero
 		do drawStep();
@@ -41,10 +43,23 @@ class GameOfLife
 		// Calculate and draw next step
 		while(true)
 		{
-			do Sys.wait(stepDelay); //Wait until next step 
-			do calculateStep(); //Calculates a new Matrix
-			do Screen.clearScreen();
-			do drawStep(); //Prints the Matrix
+			if(Keyboard.keyPressed() = 32) //Space pressed, unpause
+				{
+					let paused = false;
+					do Sys.wait(300);
+				}
+			while(~(paused)) //Game isn't paused
+			{
+				if(~(Keyboard.keyPressed() = 0)) //A key has been pressed
+				{
+					let c = Keyboard.keyPressed();
+					do handleInput(c);
+				}
+				do Sys.wait(stepDelay); //Wait until next step 
+				do calculateStep(); //Calculates a new Matrix
+				do Screen.clearScreen();
+				do drawStep(); //Prints the Matrix
+			}			
 		 }
 		
 		//End Simulation
@@ -166,6 +181,29 @@ class GameOfLife
 		return;
 	}
 	
+	method void handleInput(char key)
+	{
+		if(key = 130) //Left arrow
+		{
+			if(stepDelay > 199) //Don't go under 100ms delay
+			{
+				let stepDelay = stepDelay - 100;
+			}			
+			return;
+		}
+		if(key = 132) //Right arrow
+		{
+			let stepDelay = stepDelay + 100;
+			return;
+		}
+		if(key = 32) //Space pauses or unpauses the game
+		{
+			let paused = true;
+		}
+		do addCellsToBoard(key);
+		return;
+	}
+	
 	method void drawStep() //Draws the current Matrix state
 	{	
 		var int i;
@@ -182,22 +220,7 @@ class GameOfLife
 		
 		return;
 	}
-	
-	method void drawBoard() //Test function that sequentially draws every square in the board 
-	{
-		var int i;
-		let i = 0;
-		while(i < boardDimension)
-		{
-			do drawSquare(i);
-			do Sys.wait(5);
-						
-			let i = i + 1;
-		}
 		
-		return;
-	}
-	
 	method void initialiseMatrix() //Sets all matrix elements to integer 0;
 	{
 		var int i;
@@ -226,7 +249,7 @@ class GameOfLife
 		return;
 	}
 	
-	method void initialiseBoard(int scenario)
+	method void addCellsToBoard(int scenario)
 	{
 		var int i, j;
 		if(scenario = 48) //Generate random cell setup
@@ -372,6 +395,21 @@ class GameOfLife
 			let Matrix[1061] = 1; 
 			return;
 		}
+		return;
+	}
+	
+	method void drawBoard() //Test function that sequentially draws every square in the board 
+	{
+		var int i;
+		let i = 0;
+		while(i < boardDimension)
+		{
+			do drawSquare(i);
+			do Sys.wait(5);
+						
+			let i = i + 1;
+		}
+		
 		return;
 	}
 	

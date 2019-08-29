@@ -25,7 +25,7 @@ class Main_texteditor
 			 while(~(Keyboard.keyPressed()  = 0)) 
 			 { 
 				//Do nothing until key is released
-			 }				 
+			 }	
 			 
 			 do Output.printChar(pressedCharacter); //Handle key command
 		}

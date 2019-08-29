@@ -2,11 +2,16 @@ class Graphics
 {
 	function void displayLogo()
 		{
-			do Screen.drawRectangle(64, 64, 255, 255); 
+			do Output.moveCursor(11, 21);
+			do Output.printString("Conway's Game of Life");
+			do Output.moveCursor(13, 20);
+			do Output.printString("Press Enter to continue");
+			// do Screen.drawRectangle(64, 64, 255, 255); 
 			return;
 		}
 	function void printInstructions()
 	{
+		do Output.moveCursor(0,0);
 		do Output.printString("Welcome to HACK Conway's Game of Life!");
 		do Output.println();
 		do Output.printString("0 - Generate a random setup");
