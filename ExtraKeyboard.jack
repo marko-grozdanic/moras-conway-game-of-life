@@ -1,0 +1,13 @@
+class ExtraKeyboard
+{
+	function char readCharNoEcho() 
+	{
+        var char key;
+        while( Keyboard.keyPressed() = 0 ) {}
+        let key = Keyboard.keyPressed();
+        while( ~(Keyboard.keyPressed() = 0) ) {}
+        return key;
+    }
+}
+
+

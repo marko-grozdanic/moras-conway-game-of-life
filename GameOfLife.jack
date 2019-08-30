@@ -183,7 +183,7 @@ class GameOfLife
 			if(stepDelay > 199) //Don't go under 100ms delay
 			{
 				let stepDelay = stepDelay - 100;
-			}			
+			}
 			return;
 		}
 		if(key = 130) //Left arrow
@@ -208,7 +208,11 @@ class GameOfLife
 			do addCellsToBoard(c);
 			return;
 		}
-		do addCellsToBoard(key); //Will just return if it isn't a number 0-7
+		if(addCellsToBoard(key)) //Will  return false if it isn't a number 0-7
+		{
+			do addCellsToBoard(key);
+			return;
+		}
 		return;
 	}
 	
@@ -232,13 +236,41 @@ class GameOfLife
 	method char showInstructionsMenu()
 	{
 		var char c;
+		var bool status;
+		let status = true;
 		do Screen.clearScreen();
 		do Sys.wait(20);
 		do Graphics.printInstructions();
 		do Sys.wait(300);
-		let c = Keyboard.readChar();
+		while(status)
+		{
+			let c = ExtraKeyboard.readCharNoEcho();
+			if(validateInput(c))
+			{
+				let status = false;
+			}
+		}		
 		do Screen.clearScreen();
 		return c;
+	}
+	
+	method bool validateInput(char c)
+	{
+		if(c = 48)
+		{	return true;	}
+		if(c = 49)
+		{	return true;	}
+		if(c = 50)
+		{	return true;	}
+		if(c = 51)
+		{	return true;	}
+		if(c = 52)
+		{	return true;	}
+		if(c = 53)
+		{	return true;	}
+		if(c = 54)
+		{	return true;	}
+		return false;
 	}
 	
 	method void addCellsToBoard(int scenario)
@@ -361,16 +393,17 @@ class GameOfLife
 			let Matrix[1057] = 1;
 			return;
 		}
-		if(scenario = 54) //Draw a glider
-		{
-			let Matrix[992] = 1;
-			let Matrix[1057] = 1;
-			let Matrix[1121] = 1;
-			let Matrix[1120] = 1;
-			let Matrix[1119] = 1;
-			return;
-		}
-		if(scenario = 55) //Draw a heavy weight spaceship
+		// if(scenario = 54) //Draw a glider
+		// {
+			// let Matrix[992] = 1;
+			// let Matrix[1057] = 1;
+			// let Matrix[1121] = 1;
+			// let Matrix[1120] = 1;
+			// let Matrix[1119] = 1;
+			// return;
+		// }
+		// if(scenario = 55) //Draw a heavy weight spaceship
+		if(scenario = 54) //Draw a heavy weight spaceship
 		{
 			let Matrix[998] = 1; 
 			let Matrix[870] = 1; 
