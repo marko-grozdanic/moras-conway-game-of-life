@@ -450,20 +450,4 @@ class GameOfLife
 		
 		return;
 	}
-	
-	method void drawBoard() //Test function that sequentially draws every square in the board 
-	{
-		var int i;
-		let i = 0;
-		while(i < boardDimension)
-		{
-			do drawSquare(i);
-			do Sys.wait(5);
-						
-			let i = i + 1;
-		}
-		
-		return;
-	}
-	
 }	
