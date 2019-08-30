@@ -30,11 +30,19 @@ class Graphics
 		do Output.println();
 		do Output.printString("7 - Spawn a heavy-weight spaceship");
 		do Output.println();
+		do Output.printString("Space - Pauses/Unpauses the game");
 		do Output.println();
-		do Output.printString("During the game you can use the left arrow to decrease, and the right arrow to increase the time between each step. You can also use the above numbers to spawn objects during the game.");
+		do Output.printString("Backspace - Clears the grid");
 		do Output.println();
-		do Output.printString("Pressing Space once will put the game on manual control meaning you can further advance new generations of life manually by pressing Space. Pressing Backspace will clear the board of cells.");
-		
+		do Output.printString("Left arrow - Slows down the game");
+		do Output.println();
+		do Output.printString("Left arrow - Speeds up the game");
+		do Output.println();
+		do Output.printString("ESC - Shows the information screen");
+		do Output.println();	
+		do Output.println();
+		do Output.println();
+		do Output.printString("You can also use the numbers 0-7 to spawn objects during the game.");
 		return;
 	}
 }
