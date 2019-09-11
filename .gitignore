@@ -2,7 +2,6 @@ bin/
 builtInChips/
 builtInVMCode/
 OS/
-*.vm
 *.bat
 *.sh
 *.DS_Store
