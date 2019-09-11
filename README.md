@@ -1,1 +1,1 @@
-# MORAS Text Editor
+# MORAS Conway's Game of Life
