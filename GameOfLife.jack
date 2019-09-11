@@ -90,59 +90,181 @@ class GameOfLife
 		}
 		let i = 0;
 		while(i < 2048) //For every cell
-		{	
-			if((i-64) > -1) //North 
-			{	
-				if(Buffer[i-64] = 1)
-				{
-					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
-				}				
-			}
-			if((i+64) < 2048) //South 
+		{
+			if(isEdgeCase(i))
 			{
-				if(Buffer[i+64] = 1) 
+				if(ExtraMath.modulo(i, 64) = 0) //Cell is on left border
+				{
+					if(Buffer[i-64] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+64] = 1) //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+63] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-63] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+65] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+127] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}	
+					if(Buffer[i-1] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
+				if(ExtraMath.modulo(i, 64) = 63) //Cell is on right border
+				{
+					if(Buffer[i-64] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+64] = 1) //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-63] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-127] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+63] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}	
+					if(Buffer[i-65] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
+				if(i < 64) //Cell is on top border
+				{
+					if(Buffer[i+1984] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+64] = 1)  //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1985] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+65] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+63] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1983] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
+				if(i > 1983) //Cell is on bottom border
+				{
+						if(Buffer[i-64] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1984] = 1)  //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-63] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1983] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1985] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-65] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
+			}
+			else //Every other cell
+			{
+				if(Buffer[i-64] = 1) //North
 				{
 					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 				}
-			}
-			if((i+1) < 2048) //East 
-			{
-				if(Buffer[i+1] = 1)
+				if(Buffer[i+64] = 1)  //South
 				{
 					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 				}
-			}
-			if((i-1) > -1) //West 
-			{
-				if(Buffer[i-1] = 1)
+				if(Buffer[i+1] = 1) //East
 				{
 					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 				}
-			}
-			if((i-63) > -1) //Northeast 
-			{
-				if(Buffer[i-63] = 1)
+				if(Buffer[i-1] = 1) //West
 				{
 					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 				}
-			}
-			if((i+65) < 2048) //Southeast 
-			{
-				if(Buffer[i+65] = 1)
+				if(Buffer[i-63] = 1) //Northeast
 				{
 					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 				}
-			}
-			if((i+63) < 2048) //Southwest 
-			{
-				if(Buffer[i+63] = 1)
+				if(Buffer[i+65] = 1) //Southeast
 				{
 					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 				}
-			}			
-			if((i-65) > -1) //Northwest 
-			{
-				if(Buffer[i-65] = 1) 
+				if(Buffer[i+63] = 1) //Southwest
+				{
+					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+				}
+				if(Buffer[i-65] = 1) //Northwest
 				{
 					let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 				}
@@ -270,6 +392,8 @@ class GameOfLife
 		{	return true;	}
 		if(c = 54)
 		{	return true;	}
+		if(c = 55)
+		{	return true;	}
 		return false;
 	}
 	
@@ -393,17 +517,16 @@ class GameOfLife
 			let Matrix[1057] = 1;
 			return;
 		}
-		// if(scenario = 54) //Draw a glider
-		// {
-			// let Matrix[992] = 1;
-			// let Matrix[1057] = 1;
-			// let Matrix[1121] = 1;
-			// let Matrix[1120] = 1;
-			// let Matrix[1119] = 1;
-			// return;
-		// }
-		// if(scenario = 55) //Draw a heavy weight spaceship
-		if(scenario = 54) //Draw a heavy weight spaceship
+		if(scenario = 54) //Draw a glider
+		{
+			let Matrix[992] = 1;
+			let Matrix[1057] = 1;
+			let Matrix[1121] = 1;
+			let Matrix[1120] = 1;
+			let Matrix[1119] = 1;
+			return;
+		}
+		if(scenario = 55) //Draw a heavy weight spaceship
 		{
 			let Matrix[998] = 1; 
 			let Matrix[870] = 1; 
@@ -423,6 +546,27 @@ class GameOfLife
 		return;
 	}
 	
+	method bool isEdgeCase(int cell)
+	{
+		if(cell = 0)
+		{	return true;	}
+		if(cell = 63)
+		{	return true;	}
+		if(cell = 2047)
+		{	return true;	}
+		if(cell = 1984)
+		{	return true;	}
+		if(ExtraMath.modulo(cell, 64) = 0) //Left border
+		{	return true;	}
+		if(ExtraMath.modulo(cell, 64) = 63) //Right border
+		{	return true;	}
+		if(cell < 64) //Top border
+		{	return true;	}
+		if(cell > 1983) //Bottom border
+		{	return true;	}		
+		
+		return false;
+	}
 	method void initialiseMatrix() //Sets all matrix elements to integer 0;
 	{
 		var int i;
