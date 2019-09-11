@@ -233,6 +233,146 @@ class GameOfLife
 						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
 					}
 				}
+				if(i = 0)
+				{
+					if(Buffer[1984] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+64] = 1)  //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[63] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[1985] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+65] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[127] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[2047] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
+				if(i = 63)
+				{
+					if(Buffer[2047] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+64] = 1)  //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[0] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[1984] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[32] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+63] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[2046] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
+				if(i = 1984)
+				{
+					if(Buffer[i-64] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[0] = 1)  //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i+1] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[2047] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-63] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[1] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[63] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[1983] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
+				if(i = 2047)
+				{
+					if(Buffer[i-64] = 1) //North
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[63] = 1)  //South
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[1984] = 1) //East
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-1] = 1) //West
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[1920] = 1) //Northeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[0] = 1) //Southeast
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[62] = 1) //Southwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+					if(Buffer[i-65] = 1) //Northwest
+					{
+						let aliveNeighbouringCells = aliveNeighbouringCells + 1;
+					}
+				}
 			}
 			else //Every other cell
 			{
